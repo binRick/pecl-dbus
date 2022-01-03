@@ -29,3 +29,5 @@ dbus.la
 dbus.lo
 dbus.so
 introspect.lo
+.dnf
+configure.ac
