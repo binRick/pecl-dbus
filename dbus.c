@@ -125,8 +125,8 @@ const zend_function_entry dbus_funcs_dbus_object_path[] = {
 #define PHP_DBUS_RETURN_FUNCTION   2
 
 static void dbus_register_classes(TSRMLS_D);
-static zval * dbus_instantiate(zend_class_entry *pce, zval *object TSRMLS_DC);
-static int php_dbus_handle_reply(zval *return_value, DBusMessage *msg, int always_array TSRMLS_DC);
+static zval * dbus_instantiate(zend_class_entry *pce, zval *object);
+static int php_dbus_handle_reply(zval *return_value, DBusMessage *msg, int always_array);
 static int php_dbus_append_parameters(DBusMessage *msg, zval *data, xmlNode *inXml, int type TSRMLS_DC);
 static int php_dbus_fetch_child_type(zval *child TSRMLS_DC);
 /* }}} */
@@ -1008,8 +1008,14 @@ php_dbus_do_method_call(php_dbus_obj *dbus,
 		method_args = safe_emalloc(sizeof(zval *), num_elems, 0);
 	}
 
-	if (call_user_function_ex(EG(function_table), object, &callback, &retval,
-				              num_elems, method_args, 0, NULL) == SUCCESS) {
+//  if (call_user_function(EG(function_table), object, &callback, &retval,
+//				              num_elems, method_args) == SUCCESS) {
+//+	
+//	if (call_user_function_ex(EG(function_table), object, &callback, &retval,
+	if (call_user_function(EG(function_table), object, &callback, &retval,
+				              num_elems, method_args) == SUCCESS) {
+//	
+//				              num_elems, method_args, 0, NULL) == SUCCESS) {
 		if (!Z_ISUNDEF(retval)) {
 			reply = dbus_message_new_method_return(msg);
 			php_dbus_append_parameters(reply, &retval, NULL,
