@@ -1,3 +1,10 @@
+#!/bin/bash
+set -ex
+
 cd /examples
 
-for x in *.php; do php $x;sleep .3; done
+for x in *.php; do 
+  
+  timeout 1 php $x || true
+  sleep .3
+done

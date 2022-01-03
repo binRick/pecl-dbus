@@ -31,8 +31,8 @@ WORKDIR /examples
 
 EXPOSE 49225
 ENV PORT=49225
-ENV SOCK=/dbus.sock
-ENV DBUS_SESSION_BUS_ADDRESS=unix:path=/dbus.sock
+ENV SOCK=/run/dbus/system_bus_socket
+ENV DBUS_SESSION_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 COPY container-socat.sh /socat.sh
 RUN chmod +x /socat.sh
 
