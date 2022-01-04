@@ -29,4 +29,8 @@ dbus.la
 dbus.lo
 dbus.so
 introspect.lo
+<<<<<<< HEAD
+=======
+.dnf
+>>>>>>> 47e0fb309da81be430ba7d7ac5e972dc64b50627
 configure.ac

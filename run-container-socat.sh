@@ -1,1 +1,1 @@
-./run.sh bash -xc /socat.sh
+./run.sh bash -xc /container-socat.sh
