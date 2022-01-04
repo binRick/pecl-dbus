@@ -29,3 +29,4 @@ dbus.la
 dbus.lo
 dbus.so
 introspect.lo
+configure.ac
